@@ -7,12 +7,14 @@ public class WordWrap {
         }
 
         if(text.length() > columnWidth){
-            for (int i = 1; i <= text.length() ; i++) {
-                if(i%columnWidth == 0){
-                    res += text.substring(0,columnWidth).concat("\n");
-                    restOf += text.substring(i,columnWidth);
-                    if(restOf.length() > columnWidth){
-                    }
+            System.out.println(text.length()-1);
+            //res += text.substring(0,columnWidth).concat("\n");
+            for (int i = 0; i < text.length() ; i++) {
+                if(i == text.length()-1){
+                 res+=text.substring(text.lastIndexOf("\n"),text.length());
+
+                }else if(i%columnWidth == 0){
+                    res += text.substring(i,i+columnWidth).concat("\n");
                 }
             }
             return res;
