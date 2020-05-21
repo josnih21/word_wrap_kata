@@ -1,24 +1,23 @@
 public class WordWrap {
     public static String wrapping(String text,int columnWidth){
         String res = "";
+        String restOf = "";
         if (text.length() < columnWidth){
             return text;
         }
 
         if(text.length() > columnWidth){
-            return text.substring(0,columnWidth)+"\n"+text.substring(columnWidth,text.length());
+            for (int i = 1; i <= text.length() ; i++) {
+                if(i%columnWidth == 0){
+                    res += text.substring(0,columnWidth).concat("\n");
+                    restOf += text.substring(i,columnWidth);
+                    if(restOf.length() > columnWidth){
+                    }
+                }
+            }
+            return res;
         }
         return "";
     }
 
-
-    public static String recursiveWrapping(String text,int columnWidth){
-        String finalString = text.substring(0,columnWidth)+"\n";
-        if(text.substring(columnWidth,text.length()).length()> columnWidth){
-          finalString += text.substring(finalString.length(),finalString.length()+columnWidth)+"\n";
-
-        }
-
-        return finalString+=recursiveWrapping(text,columnWidth);
-    }
 }
