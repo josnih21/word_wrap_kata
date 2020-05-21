@@ -1,4 +1,4 @@
-public class WordWrap {
+public class wordWrap {
     public static String wrapping(String text, int columnWidth) {
 
         boolean shorterThanColumn = text.length() < columnWidth;
@@ -20,6 +20,7 @@ public class WordWrap {
         for (int i = 1; i <= text.length(); i++) {
             if (i + columnWidth > text.length()) {
                 res += text.substring(res.lastIndexOf("\n")-newLineCount);
+                res = res.trim();
                 break;
             } else if (i % columnWidth == 0) {
                 res += text.substring(i, i + columnWidth).concat("\n");
