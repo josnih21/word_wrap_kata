@@ -6,7 +6,9 @@ public class WordWrap {
         }
 
         if(text.length() > columnWidth){
-            return text.substring(0,columnWidth)+"\n"+text.substring(columnWidth,text.length());
+            res+= recursiveWrapping(text,columnWidth);
+            return res;
+            //return text.substring(0,columnWidth)+"\n"+text.substring(columnWidth,text.length());
         }
         return "";
     }
@@ -19,6 +21,6 @@ public class WordWrap {
 
         }
 
-        return finalString+=recursiveWrapping(text,columnWidth);
+        return finalString;
     }
 }
