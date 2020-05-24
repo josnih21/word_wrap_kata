@@ -1,33 +1,29 @@
 public class wordWrap {
-    public static String wrapping(String text, int columnWidth) {
-
-        boolean shorterThanColumn = text.length() < columnWidth;
-        if (shorterThanColumn) {
+    public static String wrap(String text, int columnWidth) {
+        boolean textSmallerThanColumnWidth = text.length() <= columnWidth;
+        if (textSmallerThanColumnWidth) {
             return text;
         }
-
-        boolean biggerThanColumn = text.length() > columnWidth;
-        if (biggerThanColumn) {
-            return wrapString(text, columnWidth);
-        }
-        return "";
+        String textWrapped = wrappingText(text, columnWidth);
+        return textWrapped;
     }
 
-    private static String wrapString(String text, int columnWidth) {
-        int newLineCount = 0;
-        String res = "";
-        res += text.substring(0, columnWidth).concat("\n");
-        for (int i = 1; i <= text.length(); i++) {
-            if (i + columnWidth > text.length()) {
-                res += text.substring(res.lastIndexOf("\n")-newLineCount);
-                res = res.trim();
-                break;
-            } else if (i % columnWidth == 0) {
-                res += text.substring(i, i + columnWidth).concat("\n");
-                newLineCount++;
+
+    private static String wrappingText(String text, int columnWidth) {
+        String textWrapped = "";
+        while (true) {
+            boolean textBiggerThanColumnWidth = text.length() > columnWidth;
+            if (!textBiggerThanColumnWidth) break;
+            int indexOfWhiteSpace = text.lastIndexOf(" ", columnWidth);
+            if (indexOfWhiteSpace > 0) {
+                textWrapped += text.substring(0, indexOfWhiteSpace).concat("\n");
+                text = text.substring(indexOfWhiteSpace + 1);
+            } else {
+                textWrapped += text.substring(0, columnWidth).concat("\n");
+                text = text.substring(columnWidth);
             }
         }
-        return res;
+        textWrapped += text;
+        return textWrapped;
     }
-
 }
