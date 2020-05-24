@@ -12,7 +12,7 @@ public class wordWrap {
     private static String wrappingText(String text, int columnWidth) {
         String textWrapped = "";
         while (true) {
-            boolean textBiggerThanColumnWidth = text.length() > columnWidth;
+            boolean textBiggerThanColumnWidth = text.length()-1 > columnWidth;
             if (!textBiggerThanColumnWidth) break;
             int indexOfWhiteSpace = text.lastIndexOf(" ", columnWidth);
             if (indexOfWhiteSpace > 0) {
