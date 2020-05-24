@@ -25,9 +25,8 @@ public class wordWrapShould {
         assertThat(wordWrap.wrap("hello world",5)).isEqualTo("hello\nworld");
         assertThat(wordWrap.wrap("hello world",3)).isEqualTo("hel\nlo\nwor\nld");
         assertThat(wordWrap.wrap("hoy tengo papas de comer",5)).isEqualTo("hoy\ntengo\npapas\nde\ncomer");
-        assertThat(wordWrap.wrap("a longword",5)).isEqualTo("a\nlongw\nord");
+        assertThat(wordWrap.wrap("You cannot say Pop and forget the smoke",6)).isEqualTo("You\ncannot\nsay\nPop\nand\nforget\nthe\nsmoke");
         assertThat(wordWrap.wrap("Mi nombre es Shepard y esta es mi tienda favorita de la ciudadela",10)).isEqualTo("Mi nombre\nes Shepard\ny esta es\nmi tienda\nfavorita\nde la\nciudadela");
-
     }
 
 
