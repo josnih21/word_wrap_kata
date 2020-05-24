@@ -4,8 +4,7 @@ public class wordWrap {
         if (textSmallerThanColumnWidth) {
             return text;
         }
-        String textWrapped = wrappingText(text, columnWidth);
-        return textWrapped;
+        return wrappingText(text, columnWidth);
     }
 
 
